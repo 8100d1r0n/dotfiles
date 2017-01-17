@@ -9,5 +9,5 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 NonBlocking=true
-ExecStart=/usr/bin/dnscrypt-proxy --ephemeral-keys --resolver-name=cloudns-syd --local-address=127.0.0.1:40 --user=dnscrypt
+ExecStart=/usr/bin/dnscrypt-proxy --ephemeral-keys --resolver-name=d0wn-random-ns1 --local-address=127.0.0.1:40 --user=dnscrypt
 
