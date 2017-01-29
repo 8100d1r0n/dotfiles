@@ -1,0 +1,122 @@
+Section "ServerLayout"
+	Identifier     "X.org Configured"
+	Screen      0  "Screen0" 0 0
+	InputDevice    "Mouse0" "CorePointer"
+	InputDevice    "Keyboard0" "CoreKeyboard"
+EndSection
+
+Section "Files"
+	ModulePath   "/usr/lib/xorg/modules"
+        FontPath     "/usr/share/fonts/encodings/"
+        FontPath     "/usr/share/fonts/noto/"
+	FontPath     "/usr/share/fonts/misc/"
+	FontPath     "/usr/share/fonts/TTF/"
+	FontPath     "/usr/share/fonts/OTF/"
+	FontPath     "/usr/share/fonts/Type1/"
+	FontPath     "/usr/share/fonts/100dpi/"
+	FontPath     "/usr/share/fonts/75dpi/"
+	FontPath     "/usr/share/fonts/local/"
+	FontPath     "/usr/share/fonts/wenquanyi/"
+EndSection
+
+Section "Module"
+	Load  "dri"
+	Load  "dri2"
+	Load  "dbe"
+	Load  "glx"
+	Load  "type1"
+	Load  "freetype"
+	Load  "record"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Keyboard0"
+	Driver      "kbd"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Mouse0"
+	Driver      "mouse"
+	Option	    "Protocol" "auto"
+	Option	    "Device" "/dev/input/mice"
+	Option	    "ZAxisMapping" "4 5 6 7"
+EndSection
+
+Section "Monitor"
+	Identifier   "Monitor0"
+	VendorName   "Monitor Vendor"
+	ModelName    "Monitor Model"
+	Option 	     "DPMS"
+EndSection
+
+Section "Device"
+        Identifier "Radeon"
+        Driver  "radeon"
+	Option "ColorTiling" "on"
+	Option "ColorTiling2D" "on"
+	Option "APGMode"       "8"
+	Option "EnablePageFlip" "false"
+	Option "AccelMethod"	"EXA"	
+	Option "ShadowPrimary"	"on"
+	Option      "DRI"    "2"
+	Option	    "TearFree" "off"
+	Option	"EXAVSync"	"off"
+	Option		"IgnoreEDID" "true"
+	Screen		0
+	Option		"SwapbuffersWait" "0"
+	Option		"RenderAccel" "true"
+	Option          "EnablePageFlip" "on"
+	Option		"ZaphodHeads" "LVDS"
+
+EndSection
+
+Section "ServerFlags"
+	Option "Xinerama"  "off"
+	Option	"AIGLX" "on"
+EndSection
+
+Section "Extensions"
+	Option	"Composite" "Enable"
+	Option	"RENDER" "Enable"
+	Option	"RANDR" "Enable"
+	Option	"DAMAGE" "Enable"
+	Option  "GLX" "Enable"
+EndSection
+
+Section "DRI"
+   Mode  0666
+EndSection
+
+Section "Screen"
+	Identifier "Screen0"
+	Device     "Card0"
+	Monitor    "Monitor0"
+	SubSection "Display"
+		Viewport   0 0
+		Depth     1
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     4
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     8
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     15
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     16
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     24
+	EndSubSection
+	SubSection "Display"
+		Viewport   0 0
+		Depth     32
+	EndSubSection
+EndSection
