@@ -33,6 +33,7 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'hybridline'
 let g:tex_flavor = 'latex'
 
+let &t_SI .= "\<Esc>[4 q"
 let g:vim_home = "~/.vim"
 if !g:is_unix
     let g:vim_home= $VIM."/vimfiles"
@@ -58,6 +59,16 @@ nnoremap <space> za
 " Exit insert mode
 inoremap jj <esc>
 
+
+" store backups in the same directory
+set backupdir=~/.vim/.backups
+
+" store swap files in the same directory
+set directory=~/.vim/.swaps
+
+" store undo files in the same directory
+set undodir=~/.vim/.undo
+
 " color scheme
 set background=dark
 color hybrid
@@ -70,7 +81,7 @@ set cursorline cursorcolumn
 
 " search
 set incsearch
-"set highlight 	" conflict with highlight current line
+"set highlight " conflict with highlight current line
 set ignorecase
 set smartcase
 
@@ -93,7 +104,7 @@ set laststatus=2                                                  " use 2 lines 
 set matchtime=2                                                   " show matching bracket for 0.2 seconds
 set matchpairs+=<:>                                               " specially for html
 " set relativenumber
-
+set linespace=8                                                   "Increase line height spacing by pixels.
 " Default Indentation
 set autoindent
 set smartindent     " indent when
@@ -216,8 +227,7 @@ let NERDCompactSexyComs=1
 let g:user_emmet_expandabbr_key='<C-j>'
 
 " powerline
-let g:Powerline_symbols = 'fancy'
-
+"let g:Powerline_symbols = 'fancy'
 " NeoComplCache
 let g:neocomplcache_enable_at_startup=1
 let g:neoComplcache_disableautocomplete=0
@@ -255,7 +265,9 @@ nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
 nmap <F3> :GundoToggle<cr>
 "nmap <F4> :IndentGuidesToggle<cr>
-nmap  <D-/> :
+
+"nmap  <D-/> :
+nmap <C-/> :
 nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
 
@@ -284,10 +296,10 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " sublime key bindings
-nmap <D-]> >>
-nmap <D-[> <<
-vmap <D-[> <gv
-vmap <D-]> >gv
+nmap <C-]> >>
+nmap <C-[> <<
+vmap <C-[> <gv
+vmap <C-]> >gv
 
 " eggcache vim
 nnoremap ; :
@@ -303,9 +315,10 @@ if has("gui_running")
     set go=aAce  " remove toolbar
     "set transparency=30
     if is_unix
-	set guifont=Inconsolata\ for\ Powerline\ 12
+	set guifont=Dejavu\ Sans Mono\ 10.5
+	"set guifont=Inconsolata\ for\ Powerline\ 12
     else
-	set guifont=Inconsolata\ for\ Powerline\ 12
+	set guifont=DejaVu\ Sans\ Mono\ 10
     endif
     set showtabline=2
     set columns=140
@@ -331,7 +344,8 @@ if has("eval") && v:version>=600
     filetype plugin on
     filetype indent on
 endif
-
+set modeline
+"set modelines=1
 "Set to auto read when a file is changed from the outside
 if exists("&autoread")
     set autoread
@@ -417,21 +431,24 @@ autocmd BufNewFile *.sh,*.java exec ":call SetTitle()"
 func SetTitle()
     if &filetype == 'sh'
         call setline(1, "#!/bin/bash")
-        call append(line("."), "#########################################################################")
-        call append(line(".")+1, "# Author: 8100d1r0n")
-        call append(line(".")+2, "# E-mail: echo  ODEwMGQxcjBuKGF0KXJpc2V1cChkb3QpbmV0Cg==|base64 -d")
-        call append(line(".")+3, "# Created Time: ".strftime("%FT%T%z"))
-        call append(line(".")+4, "# File Name: ".expand("%"))
-        call append(line(".")+5, "#########################################################################")
-        call append(line(".")+6, "")
+        call append(line(".")+0, "#########################################################################")
+        call append(line(".")+1, "#   Author: 8100d1r0n, (https://github.com/8100d1r0n)")
+        call append(line(".")+2, "#   E-mail: echo  ODEwMGQxcjBuKGF0KXJpc2V1cChkb3QpbmV0Cg== | base64 -d")
+        call append(line(".")+3, "#  Created: ".strftime("%F  T %H:%M"))
+        call append(line(".")+4, "# Revision: none")
+        call append(line(".")+5, "# FileName: ".expand("%"))
+        call append(line(".")+6, "#########################################################################")
+        call append(line(".")+7, "")
     else
-        call setline(1, "/*************************************************************************")
-        call append(line("."), " Author: 8100d1r0n")
-        call append(line(".")+1, " E-mail: echo ODEwMGQxcjBuKGF0KXJpc2V1cChkb3QpbmV0Cg==|base64 -d")
-        call append(line(".")+2, " Created Time: ".strftime("%FT%T%z"))
-        call append(line(".")+3, " File Name: ".expand("%"))
-        call append(line(".")+4, " ************************************************************************/")
-        call append(line(".")+5, "")
+        call setline(1, "/**=====================================================================")
+        call append(line("."),   " *    Author: 8100d1r0n")
+        call append(line(".")+1, " *    E-mail: echo ODEwMGQxcjBuKGF0KXJpc2V1cChkb3QpbmV0Cg== | base64 -d")
+        call append(line(".")+2, " *   Created: ".strftime("%F  T %H:%M"))
+        call append(line(".")+3, " *  Revision: none")
+        call append(line(".")+4, " *  FileName: ".expand("%"))
+	call append(line(".")+5, " * =====================================================================")
+        call append(line(".")+6, " */")
+        call append(line(".")+7, "")
     endif
 endfunc
 
