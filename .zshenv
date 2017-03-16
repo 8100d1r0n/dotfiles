@@ -4,6 +4,8 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+#
+export VMWARE_USE_SHIPPED_LIBS='yes'
 # for GTK styles in Qt
 export GTK2_RC_FILES=$HOME/.gtkrc-2.0
 export GTK_PATH=:/usr/lib/gtk-2.0
