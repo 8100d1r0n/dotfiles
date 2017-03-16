@@ -4,7 +4,7 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-#
+#vmware 12 process terminates immediately after start, no GUI is launched
 export VMWARE_USE_SHIPPED_LIBS='yes'
 # for GTK styles in Qt
 export GTK2_RC_FILES=$HOME/.gtkrc-2.0
