@@ -20,54 +20,61 @@ Section "Files"
 EndSection
 
 Section "Module"
-	Load  "dri"
-	Load  "dri2"
-	Load  "dbe"
-	Load  "glx"
-	Load  "type1"
-	Load  "freetype"
-	Load  "record"
+        Load  "glx"
+        Load  "extmod"
+        Load  "record"
+        Load  "dri2"  
+        Load  "dbe"   
+        Load  "drm"   
+        Load  "dri"   
 EndSection
 
 Section "InputDevice"
-	Identifier  "Keyboard0"
-	Driver      "kbd"
+	Identifier	"Keyboard0"
+	Driver		"kbd"
 EndSection
 
 Section "InputDevice"
-	Identifier  "Mouse0"
-	Driver      "mouse"
-	Option	    "Protocol" "auto"
-	Option	    "Device" "/dev/input/mice"
-	Option	    "ZAxisMapping" "4 5 6 7"
+	Identifier	"Mouse0"
+	Driver		"mouse"
+	Option		"Protocol" "auto"
+	Option		"Device" "/dev/input/mice"
+	Option		"ZAxisMapping" "4 5 6 7"
 EndSection
 
 Section "Monitor"
-	Identifier   "Monitor0"
-	VendorName   "Monitor Vendor"
-	ModelName    "Monitor Model"
-	Option 	     "DPMS"
+	Identifier	"Monitor0"
+	VendorName	"Monitor Vendor"
+	ModelName	"Monitor Model"
+	Option		"DPMS"
 EndSection
 
 Section "Device"
-        Identifier "Radeon"
-        Driver  "radeon"
-	Option "ColorTiling" "on"
-	Option "ColorTiling2D" "on"
-	Option "APGMode"       "8"
-	Option "EnablePageFlip" "false"
-	Option "AccelMethod"	"EXA"	
-	Option "ShadowPrimary"	"on"
-	Option      "DRI"    "2"
-	Option	    "TearFree" "off"
-	Option	"EXAVSync"	"off"
-	Option		"IgnoreEDID" "true"
-	Screen		0
-	Option		"SwapbuffersWait" "0"
-	Option		"RenderAccel" "true"
-	Option          "EnablePageFlip" "on"
-	Option		"ZaphodHeads" "LVDS"
-
+        Identifier	"Device0"
+        Driver 		"radeon"
+	Option 		"ColorTiling" "on"
+	Option		"ColorTiling2D" "on"
+	Option		"APGMode"       "4"
+	Option		"AccelMethod"	"XAA"
+	Option		"EXAPixmaps"	"off"
+	Option		"MigrationHeuristic" "greedy"	
+	Option		"ShadowPrimary"	"off"
+	Option		"DRI"    "2"
+	Option		"TearFree" "on"
+	Option		"EnablePageFlip" "on"
+	Option		"EXAVSync"	"off"
+	Option		"IgnoreEDID" "false"
+	Option		"SwapbuffersWait" "false"
+	Option		"ZaphodHeads" "LVDS" 
+	Option		"DRI"  "true"
+	Option          "XAANOOffscreenPixmaps" "true"
+	Option          "RenderAccel" "true"          
+	Option          "AllowGLXWithComposite" "true"
+	Option		"SWCursor"	"false"
+	Option          "GARTSize" "64" 
+	VendorName	"radeon"
+	BusID		"PCI:1:5:0"
+	Screen 0
 EndSection
 
 Section "ServerFlags"
@@ -76,14 +83,12 @@ Section "ServerFlags"
 EndSection
 
 Section "Extensions"
-	Option	"Composite" "Enable"
-	Option	"RENDER" "Enable"
-	Option	"RANDR" "Enable"
-	Option	"DAMAGE" "Enable"
-	Option  "GLX" "Enable"
+	Option		"Composite" "Enable"
+	Option		"RENDER" "Enable"
 EndSection
 
 Section "DRI"
+   Group "video"
    Mode  0666
 EndSection
 
@@ -114,9 +119,5 @@ Section "Screen"
 	SubSection "Display"
 		Viewport   0 0
 		Depth     24
-	EndSubSection
-	SubSection "Display"
-		Viewport   0 0
-		Depth     32
 	EndSubSection
 EndSection
