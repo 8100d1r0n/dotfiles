@@ -11,6 +11,8 @@ ExecStart=/usr/bin/tmux select-pane -t 0
 ExecStart=/usr/bin/tmux new-window -n 'video' 'zsh'
 ExecStart=/usr/bin/tmux new-window -n 'music' 'ncmpcpp && zsh'
 ExecStart=/usr/bin/tmux new-window -n 'torrent' 'transmission-remote-cli && zsh'
+ExecStart=/usr/bin/tmux new-window -n 'google' 'BROWSE=links googler && zsh'
+ExecStart=/usr/bin/tmux split-window -v  'BROWSE=links googler && zsh'
 ExecStart=/usr/bin/tmux select-window -t 1
 ExecStop=/usr/bin/tmux kill-session -t 0
 
