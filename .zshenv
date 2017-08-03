@@ -18,8 +18,8 @@ export USE_CCACHE=1
 CHROOT=$HOME/chroot
 export GOPATH=$HOME/go
 export PYTHONSTARTUP=$HOME/.pythonrc
-export GEM_PATH=$HOME/.gem/ruby/2.3.0/bin
-export GEM_HOME=$HOME/.gem/ruby/2.3.0/
+export GEM_PATH=$HOME/.gem/ruby/2.4.0/bin
+export GEM_HOME=$HOME/.gem/ruby/2.4.0/
 export ANDROID_HOME=/opt/android-sdk
 [[ -d $(ruby -rubygems -e "puts Gem.user_dir")/bin ]] && export PATH=$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin
 export GNUPGHOME="/home/wolf/.gnupg"
@@ -32,6 +32,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VDPAU_DRIVER=r300
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH"
 export LIBVA_DRIVER_NAME=vdpau
+
 alias ifconfig='grcc ifconfig'
 alias netstat='grcc netstat'
 alias traceroute='grcc traceroute'
@@ -68,7 +69,6 @@ alias la="ls -a --color=auto --group-directories-first"
 alias lsp="ls++"
 alias -g L='| less'
 alias -g G='| grep'
-alias mysshshell="sshpass -p `cat ~/.sshpass` ssh -L 6667:localhost:3333 root@`cat ~/.sship` -p 2207"
 alias udcli="udcli -32 -x"
 alias resdnstat="sudo systemctl status dnscrypt-proxy.service unbound.service"
 alias ytdown="youtube-dl"
@@ -94,6 +94,15 @@ alias vime='vim -u $HOME/.vimencrypt -x'
 alias gvime='gvim -u $HOME/.vimencrypt -x'
 alias nv='nvim'
 alias nview='nvim -R'
+alias gnews='BROWSE=links googler -N'
+alias gog='BROWSE=links googler'
+alias arch32.sh='sudo arch32.sh'
+alias schroot='LC_ALL=C;schroot -p -- $@'
+alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 20 | head -n 1"
+alias pwgen='pwgen -s 40 1'
+alias neofetch='neofetch --color_blocks off --w3m $1'
+alias macoshell='sudo macoshell;darling shell'
+
 #alias rake="bundle exec rake"
 # rvm
 # Ensure that a non-login, non-interactive shell has a defined environment.

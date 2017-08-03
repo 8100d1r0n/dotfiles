@@ -11,5 +11,5 @@
 #
 # By default this script does nothing.
 echo -en '\e[?17;3;291c'
-radhost.sh
+/usr/bin/random-hostname.sh
 exit 0
