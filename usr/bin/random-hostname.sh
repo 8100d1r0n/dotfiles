@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 __set_random_hostname() {
   local display_number="${DISPLAY//:}"
   local new_hostname=$(head -n1 < <(fold -w5 < <(tr -cd 'a-z0-9' < /dev/urandom)))
